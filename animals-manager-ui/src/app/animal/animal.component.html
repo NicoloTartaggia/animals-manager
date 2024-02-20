@@ -1,0 +1,43 @@
+<p>
+    <mat-toolbar>
+      <span>Hello {{username}} ({{role}}) - Your animals</span>
+      <button mat-mini-fab class="admin-button new-animal-button" color="primary" (click)="openDialog()" [disabled]="!isUserAtLeastModifier()">
+        <i class="material-icons">add</i>
+      </button>
+      <button mat-mini-fab class="admin-button logout-button" color="primary" (click)="logout()">
+        Sign out
+      </button>
+    </mat-toolbar>
+  </p>
+<mat-grid-list cols="5" rowHeight=20rem>
+    @for (animal of animals.values(); track animal) {
+        <mat-grid-tile class="animal-info-container">
+            <mat-card class="animal-info">
+                <mat-card-title>{{animal.name}}</mat-card-title>
+                <mat-card-subtitle>Type: {{animal.type}}</mat-card-subtitle>
+                <mat-card-subtitle>Species: {{animal.species}}</mat-card-subtitle>
+                <mat-card-subtitle>Age: {{animal.age}}</mat-card-subtitle>
+                <mat-card-subtitle>Gender: {{animal.gender}}</mat-card-subtitle>
+                <mat-card-subtitle>Weight: {{animal.weight}} kg</mat-card-subtitle>
+                <button mat-raised-button color="primary" (click)="showVerse(animal.id)">Speak!</button>
+                @if (showVerseGuard.get(animal.id)) {
+                    <p>{{animal.verse}}</p>
+                }
+            </mat-card>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="eat(animal.id, animal.weight)" [disabled]="!isUserAtLeastModifier()">Eat!</button>
+            </mat-card-actions>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="sleep(animal.id, animal.age)" [disabled]="!isUserAtLeastModifier()">Sleep!</button>
+            </mat-card-actions>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="deleteAnimal(animal.id)" [disabled]="!isUserAdmin()">Delete</button>
+            </mat-card-actions>
+        </mat-grid-tile>
+    }
+</mat-grid-list>
+@if (nextPageCursor) {
+    <mat-card-actions class="next-page-button">
+        <button mat-raised-button color="primary" (click)="getNextPage()">Next page</button>
+    </mat-card-actions>
+}

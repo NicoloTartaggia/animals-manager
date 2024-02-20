@@ -1,0 +1,63 @@
+<div mat-dialog-content>
+  <p>Add animal characteristics</p>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input type="text" matInput [(ngModel)]="data.name" [errorStateMatcher]="errorMatcher" required/>
+    <mat-hint>Max 30 characters</mat-hint>
+    @if (inputNameFormControl.hasError('required')) {
+      <mat-error>Please enter a valid name</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <input type="text" matInput [(ngModel)]="data.type" [errorStateMatcher]="errorMatcher" required/>
+    <mat-hint>Max 20 characters</mat-hint>
+    @if (inputTypeFormControl.hasError('required')) {
+      <mat-error>Please enter a valid type</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Species</mat-label>
+    <input type="text" matInput [(ngModel)]="data.species" [errorStateMatcher]="errorMatcher" required/>
+    <mat-hint>Max 20 characters</mat-hint>
+    @if (inputSpeciesFormControl.hasError('required')) {
+      <mat-error>Please enter a valid species</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input type="number" matInput [(ngModel)]="data.age" [errorStateMatcher]="errorMatcher" required/>
+    <mat-hint>Must be > 0</mat-hint>
+    @if (inputAgeFormControl.hasError('required')) {
+      <mat-error>Please enter a valid age</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Select gender</mat-label>
+    <mat-select [errorStateMatcher]="errorMatcher" [(ngModel)]="data.gender" required>
+      @for (gender of genderOptions; track gender) {
+        <mat-option value={{gender}}>{{gender}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Weight</mat-label>
+    <input type="number" matInput [(ngModel)]="data.weight" [errorStateMatcher]="errorMatcher" required/>
+    <mat-hint>Must be > 0</mat-hint>
+    @if (inputWeightFormControl.hasError('required')) {
+      <mat-error>Please enter a valid weight</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>    
+    <mat-label>Verse</mat-label>
+    <input type="text" matInput [(ngModel)]="data.verse" [errorStateMatcher]="errorMatcher" required/>
+    <mat-hint>Max 30 characters</mat-hint>
+    @if (inputVerseFormControl.hasError('required')) {
+      <mat-error>Please enter a valid verse</mat-error>
+    }
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annulla</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial="">Conferma</button>
+</div>

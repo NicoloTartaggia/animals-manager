@@ -1,0 +1,45 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+  
+form {
+    width: 300px;
+}
+  
+.mat-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+mat-form-field {
+    width: 100%;
+    margin-top: 15px;
+}
+  
+mat-card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+  
+button {
+    margin-top: 10px;
+}
+  
+.register-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.register-link {
+    text-align: center;
+    margin-bottom: 0;
+}
+  

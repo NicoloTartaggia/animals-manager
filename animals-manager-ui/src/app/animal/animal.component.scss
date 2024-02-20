@@ -1,0 +1,24 @@
+.new-animal-button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.animal-info-container {
+    padding: 30px;
+}
+
+.animal-info {
+    padding: 20px;
+}
+
+:host ::ng-deep .mdc-card__actions {
+    min-height: unset;
+}
+
+:host ::ng-deep .mat-grid-tile-content {
+    flex-direction: column;
+}
+
+.next-page-button {
+    position: absolute;
+}
